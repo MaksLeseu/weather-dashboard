@@ -1,0 +1,1 @@
+export const favoritesCitiesSelector = (state) => state.favoritesCities;
