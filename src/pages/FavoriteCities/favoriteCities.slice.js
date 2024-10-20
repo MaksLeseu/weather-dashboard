@@ -10,24 +10,20 @@ const slice = createSlice({
         cities: savedCities,
     },
     reducers: {
-        addCityToFavorites: (state, action) => {
+        toggleCityInFavorites: (state, action) => {
             const city = action.payload;
-            if (!state.cities.some((item) => item.id === city.id)) {
+            const existingCityIndex = state.cities.findIndex((item) => item === city);
+            if (existingCityIndex !== -1) {
+                state.cities = state.cities.filter((item) => item !== city);
+                console.log(`City ${city} has been removed from favorites`);
+            }  else {
                 state.cities.push(city);
-
-                saveToLocalStorage('favoriteCities', JSON.stringify(state.cities))
-            } else {
-                console.log('City has been already added');
+                console.log(`City ${city} has been added to favorites`);
             }
+            saveToLocalStorage('favoriteCities', state.cities);
         },
-        removeCityFromFavorites: (state, action) => {
-            const cityId = action.payload;
-            state.cities = state.cities.filter((city) => city.id !== cityId);
-
-            saveToLocalStorage('favoriteCities', JSON.stringify(state.cities))
-        }
     },
 });
 
-export const { addCityToFavorites, removeCityFromFavorites } = slice.actions;
+export const { toggleCityInFavorites } = slice.actions;
 export const favoritesCitiesReducer = slice.reducer;

@@ -9,7 +9,7 @@ const slice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(fetchCurrentWeather.fulfilled, (state, action) => {
-                state.push(action.payload);
+                return [action.payload];
             })
     }
 });

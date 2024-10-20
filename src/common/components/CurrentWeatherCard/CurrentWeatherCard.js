@@ -1,7 +1,7 @@
 import React from 'react';
 import {IconButton} from "../IconButton/IconButton";
 import {useDispatch} from "react-redux";
-import {addCityToFavorites} from "../../../pages/FavoriteCities/favoriteCities.slice";
+import {toggleCityInFavorites} from "../../../pages/FavoriteCities/favoriteCities.slice";
 
 export const CurrentWeatherCard = ({ currentWeather }) => {
     const dispatch = useDispatch();
@@ -12,7 +12,7 @@ export const CurrentWeatherCard = ({ currentWeather }) => {
     const img = 'https://media.istockphoto.com/id/1161026114/vector/white-star-vector-icon-star-icon-vector-star-icon-star-vector-icon.jpg?s=612x612&w=0&k=20&c=27EhA42whW1U0E2d32rpelHNWQw3Ro7gFudmtCt7q9w=';
 
     const handleAddToFavorites = () => {
-        dispatch(addCityToFavorites(currentWeather.city));
+        dispatch(toggleCityInFavorites(currentWeather.city));
     };
 
     return (
