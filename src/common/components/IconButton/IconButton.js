@@ -1,12 +1,14 @@
+import './IconButton.css'
 
-export const IconButton = ({ src, styles, onClick }) => {
-    if (!src) {
+
+export const IconButton = ({ styles , icon, onClick }) => {
+    if (!icon) {
         return;
     }
 
     return (
-        <button style={{...styles}} onClick={onClick}>
-            <img style={{ width: '100%', height: '100%' }} src={src} />
+        <button className={`icon-button`} style={{...styles}} onClick={onClick}>
+            { icon }
         </button>
     );
 };

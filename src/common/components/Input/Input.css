@@ -1,0 +1,11 @@
+.input {
+    border: 1px #ccc solid;
+    outline: none;
+    padding: 0 0 0 10px;
+    margin: 0;
+    background: transparent;
+    font: inherit;
+    color: inherit;
+    width: 300px;
+    height: 35px;
+}

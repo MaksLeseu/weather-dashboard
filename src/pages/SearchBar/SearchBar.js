@@ -17,7 +17,11 @@ export const SearchBar = () => {
 
     return (
         <div>
-            <Input value={cityName} onChange={handleInputChange} />
+            <Input
+                value={cityName}
+                placeholder={'Enter city'}
+                onChange={handleInputChange}
+            />
             <Button onClick={handleClick}>Send</Button>
         </div>
     );

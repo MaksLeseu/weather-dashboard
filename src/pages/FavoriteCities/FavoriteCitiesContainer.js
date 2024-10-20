@@ -12,7 +12,6 @@ export const FavoriteCitiesContainer = () => {
 
     const handleClick = (cityName) => dispatch(citiesThunk.fetchCityDetails(cityName));
 
-    console.log(favoritesCities)
     return (
         <div>
             {

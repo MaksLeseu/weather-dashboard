@@ -1,6 +1,7 @@
+import './Input.css';
 
-export const Input = ({ value, onChange }) => {
+export const Input = ({ value, placeholder, onChange }) => {
     return (
-        <input value={value} onChange={onChange} />
+        <input className={'input'} value={value} placeholder={placeholder} onChange={onChange} />
     );
 };

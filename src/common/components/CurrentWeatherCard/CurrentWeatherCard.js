@@ -1,34 +1,61 @@
 import React from 'react';
 import {IconButton} from "../IconButton/IconButton";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {toggleCityInFavorites} from "../../../pages/FavoriteCities/favoriteCities.slice";
+import {ActiveStarIcon} from "../../assets/ActiveStarIcon/ActiveStarIcon";
+import {StarIcon} from "../../assets/StarIcon/StarIcon";
+import {favoritesCitiesSelector} from "../../../pages/FavoriteCities/favoritesCities.selector";
+import {checkCity} from "../../utils/functions/checkCity";
+import './CurrentWeatherCard.css';
+import {CloudsIcon} from "../../assets/CloudsIcon/CloudsIcon";
 
 export const CurrentWeatherCard = ({ currentWeather }) => {
     const dispatch = useDispatch();
+    const favoritesCities = useSelector(favoritesCitiesSelector);
 
     if (!currentWeather) {
         return;
     }
-    const img = 'https://media.istockphoto.com/id/1161026114/vector/white-star-vector-icon-star-icon-vector-star-icon-star-vector-icon.jpg?s=612x612&w=0&k=20&c=27EhA42whW1U0E2d32rpelHNWQw3Ro7gFudmtCt7q9w=';
 
     const handleAddToFavorites = () => {
         dispatch(toggleCityInFavorites(currentWeather.city));
     };
 
+    const isCity = checkCity(currentWeather.city, favoritesCities.cities);
+
     return (
-        <div style={{ marginTop: '50px', border: '1px solid black'  }}>
-            <p>City: { currentWeather.city }</p>
-            <IconButton
-                src={img}
-                styles={{
-                    width: '50px',
-                    height: '50px',
-                }}
-                onClick={handleAddToFavorites}
-            />
-            <p>Temp: { currentWeather.temp }°C</p>
-            <p>Humidity: { currentWeather.humidity }%</p>
-            <p>Speed: { currentWeather.windSpeed } m/s</p>
+        <div className={'weather_container'}>
+            <div className={'weather_title_container'}>
+                <p className={'weather_title_text'}>Weather in {currentWeather.city} now</p>
+                <IconButton
+                    icon={isCity ? <ActiveStarIcon/> : <StarIcon/>}
+                    styles={{
+                        width: '25px',
+                        height: '25px',
+                    }}
+                    onClick={handleAddToFavorites}
+                />
+            </div>
+            <p>Воскресенье, 20 октября, 20:42</p>
+
+            <div className={'weather_data_container'}>
+                <div className={'weather_data_temp_container'}>
+                    <div className={'weather_data_temp_icon'}>
+                        <CloudsIcon/>
+                    </div>
+                    <p className={'weather_data_temp'}>{currentWeather.temp}°</p>
+                </div>
+                <div className={'weather_data_details_container'}>
+                    <div className={'weather_data_details'}>
+                        <span>icon</span>
+                        <p>humidity: {currentWeather.humidity}%</p>
+                    </div>
+                    <div className={'weather_data_details'}>
+                        <span>icon</span>
+                        <p>wind {currentWeather.windSpeed} m/s</p>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 };

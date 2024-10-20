@@ -1,0 +1,10 @@
+.color_container {
+    background-color: #e0ebff;
+}
+
+.app_container {
+    margin: 0 auto;
+    padding: 20px;
+    max-width: 1200px;
+    box-sizing: border-box;
+}
