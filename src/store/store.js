@@ -1,9 +1,10 @@
 import {configureStore} from "@reduxjs/toolkit";
-import {citySlice} from "../pages/SearchBar/searchBar.slice";
+import {weatherSlice} from "../pages/WeatherDashboard/weather.slice";
 
 export const store = configureStore({
     reducer: {
-        city: citySlice,
+        currentWeather: weatherSlice,
+        fiveDayWeather: undefined,
     }
 });
 

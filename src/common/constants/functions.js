@@ -1,0 +1,1 @@
+export const KELVIN_TO_CELSIUS_DIFF = 273.15;
