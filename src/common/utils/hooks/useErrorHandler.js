@@ -1,5 +1,5 @@
 import {useState} from "react";
-import {ERROR_INPUT_MESSAGE} from "../../constants/error";
+import {ERROR_MESSAGES} from "../../constants/error";
 
 export const useErrorHandler = () => {
     const [ error, setError ] = useState('');
@@ -7,7 +7,7 @@ export const useErrorHandler = () => {
     const validateInput = (input) => {
         const invalidChars = /[^a-zA-Z\s]/;
         if (invalidChars.test(input)) {
-            setError(ERROR_INPUT_MESSAGE);
+            setError(ERROR_MESSAGES['INPUT']);
         } else {
             setError('');
         }
