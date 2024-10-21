@@ -42,7 +42,6 @@ export const fetchCurrentWeather = createAsyncThunk(
             }
         } catch (error) {
             handleServerError(error, dispatch, true);
-            dispatch(hideLoader());
             return rejectWithValue(error);
         }
     }

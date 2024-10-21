@@ -2,7 +2,7 @@ import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {citiesApi} from "../../common/api/cities.api";
 import {FIRST_ELEMENT} from "../../common/constants/api";
 import {fetchCurrentWeather} from "../WeatherDashboard/weather.slice";
-import {hideLoader, showLoader} from "../../app/app.slice";
+import {showLoader} from "../../app/app.slice";
 import {handleServerError} from "../../common/utils/functions/handleServerError";
 
 const slice = createSlice({
@@ -16,7 +16,6 @@ export const fetchCityDetails = createAsyncThunk(
         dispatch(showLoader());
         try {
             const res = await citiesApi.getCityDetails (cityName);
-            console.log(res)
             if (res.data) {
                 const lat = res.data[FIRST_ELEMENT].lat;
                 const lon = res.data[FIRST_ELEMENT].lon;

@@ -4,20 +4,12 @@ import {useState} from "react";
 import {useDispatch} from "react-redux";
 import {citiesThunk} from "./cities.slice";
 import './SearchBar.css';
+import {useErrorHandler} from "../../common/utils/hooks/useErrorHandler";
 
 export const SearchBar = () => {
     const dispatch = useDispatch();
     const [ cityName, setCityName ] = useState('');
-    const [error, setError] = useState('');
-
-    const validateInput = (input) => {
-        const invalidChars = /[^a-zA-Z\s]/;
-        if (invalidChars.test(input)) {
-            setError('you can only enter latin letters');
-        } else {
-            setError('');
-        }
-    };
+    const { error, validateInput } = useErrorHandler();
 
     const handleInputChange = (e) => {
         setCityName(e.currentTarget.value);
