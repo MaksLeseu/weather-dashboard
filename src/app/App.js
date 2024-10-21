@@ -1,6 +1,6 @@
 import {SearchBar} from "../pages/SearchBar/SearchBar.js";
 import {WeatherDashboard} from "../pages/WeatherDashboard/WeatherDashboard";
-import {FavoriteCitiesContainer} from "../pages/FavoriteCities/FavoriteCitiesContainer";
+import {FavoriteCitiesContainer} from "../pages/FavoriteCitiesContainer/FavoriteCitiesContainer";
 import './App.css';
 
 function App() {

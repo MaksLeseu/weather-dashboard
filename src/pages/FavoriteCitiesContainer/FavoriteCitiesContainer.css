@@ -1,0 +1,23 @@
+.favorites-city_title {
+    font-size: 25px;
+}
+
+.favorites-city {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.favorites_city_item {
+    background-color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.favorites_city_item:hover {
+    background-color: #d1d1d1;
+}
+

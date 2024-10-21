@@ -1,9 +1,9 @@
 import {IconButton} from "../IconButton/IconButton";
 import {useDispatch, useSelector} from "react-redux";
-import {toggleCityInFavorites} from "../../../pages/FavoriteCities/favoriteCities.slice";
+import {toggleCityInFavorites} from "../../../pages/FavoriteCitiesContainer/favoriteCities.slice";
 import {ActiveStarIcon} from "../../assets/ActiveStarIcon/ActiveStarIcon";
 import {StarIcon} from "../../assets/StarIcon/StarIcon";
-import {favoritesCitiesSelector} from "../../../pages/FavoriteCities/favoritesCities.selector";
+import {favoritesCitiesSelector} from "../../../pages/FavoriteCitiesContainer/favoritesCities.selector";
 import {checkCity} from "../../utils/functions/checkCity";
 import './CurrentWeatherCard.css';
 import {WindIcon} from "../../assets/WindIcon/WindIcon";

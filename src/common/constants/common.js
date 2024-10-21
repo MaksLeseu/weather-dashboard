@@ -1,0 +1,1 @@
+export const CITIES_PER_PAGE = 10;
