@@ -2,6 +2,7 @@ import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {weatherData} from "../../common/api/weather.api";
 import {temperatureInCelsius} from "../../common/utils/functions/temperatureInCelsius";
 import {FIRST_ELEMENT} from "../../common/constants/api";
+import {hideLoader} from "../../app/loading.slice";
 
 const slice = createSlice({
     name:'weather',
@@ -35,10 +36,12 @@ export const fetchCurrentWeather = createAsyncThunk(
                     timezone: res.data.timezone,
                     icon: res.data.weather[FIRST_ELEMENT].icon,
                 };
+                dispatch(hideLoader());
                 return weatherData;
             }
         } catch (error) {
             console.log(error);
+            dispatch(hideLoader());
             return rejectWithValue('Error fetching weather data');
         }
     }

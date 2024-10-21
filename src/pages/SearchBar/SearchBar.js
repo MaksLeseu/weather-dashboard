@@ -1,7 +1,7 @@
 import {Input} from "../../common/components/Input/Input.js";
 import {Button} from "../../common/components/Button/Button.js";
 import {useState} from "react";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {citiesThunk} from "./cities.slice";
 import './SearchBar.css';
 

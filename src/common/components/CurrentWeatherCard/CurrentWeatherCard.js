@@ -1,28 +1,18 @@
 import {IconButton} from "../IconButton/IconButton";
-import {useDispatch, useSelector} from "react-redux";
-import {toggleCityInFavorites} from "../../../pages/FavoriteCitiesContainer/favoriteCities.slice";
 import {ActiveStarIcon} from "../../assets/ActiveStarIcon/ActiveStarIcon";
 import {StarIcon} from "../../assets/StarIcon/StarIcon";
-import {favoritesCitiesSelector} from "../../../pages/FavoriteCitiesContainer/favoritesCities.selector";
 import {checkCity} from "../../utils/functions/checkCity";
 import './CurrentWeatherCard.css';
 import {WindIcon} from "../../assets/WindIcon/WindIcon";
 import {HumidityIcon} from "../../assets/HumidityIcon/HumidityIcon";
 import {formatDateTimeByTimezone} from "../../utils/functions/formatDateTimeByTimezone";
 
-export const CurrentWeatherCard = ({ currentWeather }) => {
-    const dispatch = useDispatch();
-    const favoritesCities = useSelector(favoritesCitiesSelector);
-
+export const CurrentWeatherCard = ({ currentWeather, favoritesCities, handleAddToFavorites }) => {
     if (!currentWeather) {
         return;
     }
 
-    const handleAddToFavorites = () => {
-        dispatch(toggleCityInFavorites(currentWeather.city));
-    };
     const date = formatDateTimeByTimezone(currentWeather.timezone)
-
     const isCity = checkCity(currentWeather.city, favoritesCities.cities);
 
     return (

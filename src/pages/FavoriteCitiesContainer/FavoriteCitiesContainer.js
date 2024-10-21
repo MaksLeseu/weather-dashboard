@@ -7,13 +7,14 @@ import {Pagination} from "../../common/components/Pagination/Pagination";
 import './FavoriteCitiesContainer.css';
 import {CITIES_PER_PAGE} from "../../common/constants/common";
 import {getCitiesForCurrentPage} from "../../common/utils/functions/getCitiesForCurrentPage";
+import {FIRST_ELEMENT} from "../../common/constants/api";
 
 export const FavoriteCitiesContainer = () => {
     const dispatch = useDispatch();
     const favoritesCities = useSelector(favoritesCitiesSelector);
     const [ currentPage, setCurrentPage ] = useState(1);
 
-    if (!favoritesCities) {
+    if (!favoritesCities.cities[FIRST_ELEMENT]) {
         return;
     }
 

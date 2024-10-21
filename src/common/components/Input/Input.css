@@ -6,6 +6,6 @@
     background: transparent;
     font: inherit;
     color: inherit;
-    width: 300px;
+    max-width: 300px;
     height: 35px;
 }

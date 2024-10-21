@@ -2,6 +2,7 @@ import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {citiesApi} from "../../common/api/cities.api";
 import {FIRST_ELEMENT} from "../../common/constants/api";
 import {fetchCurrentWeather} from "../WeatherDashboard/weather.slice";
+import {showLoader} from "../../app/loading.slice";
 
 const slice = createSlice({
     name:'cities',
@@ -11,6 +12,7 @@ const slice = createSlice({
 
 export const fetchCityDetails = createAsyncThunk(
     'city/getCity', async (cityName, { rejectWithValue, dispatch }) => {
+        dispatch(showLoader());
         try {
             const res = await citiesApi.getCityDetails (cityName);
 
@@ -24,7 +26,6 @@ export const fetchCityDetails = createAsyncThunk(
             console.log(error);
             return rejectWithValue(null);
         }
-
     });
 
 export const cityAction = slice.actions;
