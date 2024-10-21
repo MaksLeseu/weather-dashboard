@@ -5,3 +5,5 @@ export const API = {
     'WEATHER': 'data/2.5/weather',
     'KEY': 'fc6833b27669a2dbf7203a31775e8e32',
 };
+
+export const NOT_FOUND_INDEX = -1;

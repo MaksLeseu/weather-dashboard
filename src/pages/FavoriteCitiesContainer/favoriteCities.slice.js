@@ -1,6 +1,7 @@
 import {createSlice} from "@reduxjs/toolkit";
 import {getStateFromLocalStorage} from "../../common/utils/functions/getStateFromLocalStorage";
 import {saveToLocalStorage} from "../../common/utils/functions/saveToLocalStorage";
+import {NOT_FOUND_INDEX} from "../../common/constants/api";
 
 const savedCities = getStateFromLocalStorage('favoriteCities') || [];
 
@@ -13,12 +14,10 @@ const slice = createSlice({
         toggleCityInFavorites: (state, action) => {
             const city = action.payload;
             const existingCityIndex = state.cities.findIndex((item) => item === city);
-            if (existingCityIndex !== -1) {
+            if (existingCityIndex !== NOT_FOUND_INDEX) {
                 state.cities = state.cities.filter((item) => item !== city);
-                console.log(`City ${city} has been removed from favorites`);
             }  else {
                 state.cities.push(city);
-                console.log(`City ${city} has been added to favorites`);
             }
             saveToLocalStorage('favoriteCities', state.cities);
         },

@@ -1,10 +1,10 @@
 import {IconButton} from "../IconButton/IconButton";
-import './CurrentWeatherCard.css';
 import {WindIcon} from "../../assets/WindIcon/WindIcon";
 import {HumidityIcon} from "../../assets/HumidityIcon/HumidityIcon";
 import {formatDateTimeByTimezone} from "../../utils/functions/formatDateTimeByTimezone";
 import {getWeatherIcon} from "../../utils/functions/getWeatherIcon";
 import {getStarIcon} from "../../utils/functions/getStarIcon";
+import './CurrentWeatherCard.css';
 
 export const CurrentWeatherCard = ({ currentWeather, favoritesCities, handleAddToFavorites }) => {
     if (!currentWeather) {
