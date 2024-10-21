@@ -6,14 +6,16 @@ import './CurrentWeatherCard.css';
 import {WindIcon} from "../../assets/WindIcon/WindIcon";
 import {HumidityIcon} from "../../assets/HumidityIcon/HumidityIcon";
 import {formatDateTimeByTimezone} from "../../utils/functions/formatDateTimeByTimezone";
+import {getWeatherIcon} from "../../utils/functions/getWeatherIcon";
 
 export const CurrentWeatherCard = ({ currentWeather, favoritesCities, handleAddToFavorites }) => {
     if (!currentWeather) {
         return;
     }
 
-    const date = formatDateTimeByTimezone(currentWeather.timezone)
+    const date = formatDateTimeByTimezone(currentWeather.timezone);
     const isCity = checkCity(currentWeather.city, favoritesCities.cities);
+    const weatherIcon = getWeatherIcon(currentWeather.icon);
 
     return (
         <div className={'weather_container'}>
@@ -33,7 +35,7 @@ export const CurrentWeatherCard = ({ currentWeather, favoritesCities, handleAddT
             <div className={'weather_data_container'}>
                 <div className={'weather_data_temp_container'}>
                     <div className={'weather_data_temp_icon'}>
-                        <img src={`http://openweathermap.org/img/wn/${currentWeather.icon}@2x.png`} alt="weather icon" />
+                        <img src={weatherIcon} alt="weather icon" />
                     </div>
                     <p className={'weather_data_temp'}>{currentWeather.temp}°</p>
                 </div>

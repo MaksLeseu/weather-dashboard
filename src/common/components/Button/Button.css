@@ -13,6 +13,16 @@
     transition: background-color 0.3s;
 }
 
+.button:disabled {
+    background-color: #b0c4de;
+    color: #ffffff;
+    opacity: 0.6;
+}
+
+.button:disabled:hover {
+    background-color: #b0c4de;
+}
+
 .button:hover {
     background-color: #2b56b3;
 }

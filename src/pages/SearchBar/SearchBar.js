@@ -1,19 +1,34 @@
 import {Input} from "../../common/components/Input/Input.js";
 import {Button} from "../../common/components/Button/Button.js";
 import {useState} from "react";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {citiesThunk} from "./cities.slice";
 import './SearchBar.css';
 
 export const SearchBar = () => {
     const dispatch = useDispatch();
-
     const [ cityName, setCityName ] = useState('');
+    const [error, setError] = useState('');
 
-    const handleInputChange = (e) => setCityName(e.currentTarget.value);
+    const validateInput = (input) => {
+        const invalidChars = /[^a-zA-Z\s]/;
+        if (invalidChars.test(input)) {
+            setError('you can only enter latin letters');
+        } else {
+            setError('');
+        }
+    };
+
+    const handleInputChange = (e) => {
+        setCityName(e.currentTarget.value);
+        validateInput(e.currentTarget.value);
+    }
+
     const handleClick = () => {
-        dispatch(citiesThunk.fetchCityDetails(cityName));
-        setCityName('');
+        if (cityName.trim() !== '' && !error) {
+            dispatch(citiesThunk.fetchCityDetails(cityName));
+            setCityName('');
+        }
     };
 
     return (
@@ -24,7 +39,8 @@ export const SearchBar = () => {
                 placeholder={'Enter city'}
                 onChange={handleInputChange}
             />
-            <Button onClick={handleClick}>Send</Button>
+            <Button onClick={handleClick} disabled={!!error}>Send</Button>
+            {error && <div className={'error-message'}>{error}</div>}
         </div>
     );
 };

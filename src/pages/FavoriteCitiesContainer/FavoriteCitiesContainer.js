@@ -42,6 +42,7 @@ export const FavoriteCitiesContainer = () => {
             <div className={'favorites-city'}>
                 {currentCities.map(city => (
                     <FavoriteCity
+                        key={city}
                         cityName={city}
                         onClick={() => handleClick(city)}
                     />
