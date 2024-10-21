@@ -3,6 +3,7 @@ import {Button} from "../../common/components/Button/Button.js";
 import {useState} from "react";
 import {useDispatch} from "react-redux";
 import {citiesThunk} from "./cities.slice";
+import './SearchBar.css';
 
 export const SearchBar = () => {
     const dispatch = useDispatch();
@@ -16,9 +17,10 @@ export const SearchBar = () => {
     };
 
     return (
-        <div>
+        <div className={'searchbar_container'}>
             <Input
                 value={cityName}
+                style={{ marginRight: '10px' }}
                 placeholder={'Enter city'}
                 onChange={handleInputChange}
             />

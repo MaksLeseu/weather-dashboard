@@ -1,4 +1,3 @@
-import React from 'react';
 import {IconButton} from "../IconButton/IconButton";
 import {useDispatch, useSelector} from "react-redux";
 import {toggleCityInFavorites} from "../../../pages/FavoriteCities/favoriteCities.slice";
@@ -7,7 +6,9 @@ import {StarIcon} from "../../assets/StarIcon/StarIcon";
 import {favoritesCitiesSelector} from "../../../pages/FavoriteCities/favoritesCities.selector";
 import {checkCity} from "../../utils/functions/checkCity";
 import './CurrentWeatherCard.css';
-import {CloudsIcon} from "../../assets/CloudsIcon/CloudsIcon";
+import {WindIcon} from "../../assets/WindIcon/WindIcon";
+import {HumidityIcon} from "../../assets/HumidityIcon/HumidityIcon";
+import {formatDateTimeByTimezone} from "../../utils/functions/formatDateTimeByTimezone";
 
 export const CurrentWeatherCard = ({ currentWeather }) => {
     const dispatch = useDispatch();
@@ -20,6 +21,7 @@ export const CurrentWeatherCard = ({ currentWeather }) => {
     const handleAddToFavorites = () => {
         dispatch(toggleCityInFavorites(currentWeather.city));
     };
+    const date = formatDateTimeByTimezone(currentWeather.timezone)
 
     const isCity = checkCity(currentWeather.city, favoritesCities.cities);
 
@@ -28,7 +30,7 @@ export const CurrentWeatherCard = ({ currentWeather }) => {
             <div className={'weather_title_container'}>
                 <p className={'weather_title_text'}>Weather in {currentWeather.city} now</p>
                 <IconButton
-                    icon={isCity ? <ActiveStarIcon/> : <StarIcon/>}
+                    icon={isCity ? <ActiveStarIcon /> : <StarIcon />}
                     styles={{
                         width: '25px',
                         height: '25px',
@@ -36,23 +38,31 @@ export const CurrentWeatherCard = ({ currentWeather }) => {
                     onClick={handleAddToFavorites}
                 />
             </div>
-            <p>Воскресенье, 20 октября, 20:42</p>
+            <p>{date}</p>
 
             <div className={'weather_data_container'}>
                 <div className={'weather_data_temp_container'}>
                     <div className={'weather_data_temp_icon'}>
-                        <CloudsIcon/>
+                        <img src={`http://openweathermap.org/img/wn/${currentWeather.icon}@2x.png`} alt="weather icon" />
                     </div>
                     <p className={'weather_data_temp'}>{currentWeather.temp}°</p>
                 </div>
                 <div className={'weather_data_details_container'}>
                     <div className={'weather_data_details'}>
-                        <span>icon</span>
-                        <p>humidity: {currentWeather.humidity}%</p>
+                        <div className={'weather_data_details_icon'}>
+                            <HumidityIcon />
+                        </div>
+                        <p>Humidity: {currentWeather.humidity}%</p>
                     </div>
                     <div className={'weather_data_details'}>
-                        <span>icon</span>
-                        <p>wind {currentWeather.windSpeed} m/s</p>
+                        <div className={'weather_data_details_icon'}>
+                            <WindIcon />
+                        </div>
+                        <p>Wind: {currentWeather.windSpeed} m/s</p>
+                    </div>
+                    <div className={'weather_data_details_temp_container'}>
+                        <p>Min temp: <span>{currentWeather.minTemp}°C</span></p>
+                        <p>Max temp: <span>{currentWeather.maxTemp}°C</span></p>
                     </div>
                 </div>
             </div>

@@ -5,12 +5,10 @@ import './App.css';
 
 function App() {
   return (
-      <div className={'color_container'}>
-          <div className={'app_container'}>
-              <FavoriteCitiesContainer/>
-              <SearchBar/>
-              <WeatherDashboard/>
-          </div>
+      <div className={'app_container'}>
+          <FavoriteCitiesContainer/>
+          <SearchBar/>
+          <WeatherDashboard/>
       </div>
   );
 }

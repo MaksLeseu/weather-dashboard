@@ -1,6 +1,7 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {weatherData} from "../../common/api/weather.api";
 import {temperatureInCelsius} from "../../common/utils/functions/temperatureInCelsius";
+import {FIRST_ELEMENT} from "../../common/constants/api";
 
 const slice = createSlice({
     name:'weather',
@@ -21,12 +22,18 @@ export const fetchCurrentWeather = createAsyncThunk(
 
             if (res.data) {
                 const temp = temperatureInCelsius(res.data.main.temp);
+                const maxTemp = temperatureInCelsius(res.data.main.temp_max);
+                const minTemp = temperatureInCelsius(res.data.main.temp_min);
 
                 const weatherData = {
                     city: res.data.name,
                     temp,
+                    maxTemp,
+                    minTemp,
                     humidity: res.data.main.humidity,
                     windSpeed: res.data.wind.speed,
+                    timezone: res.data.timezone,
+                    icon: res.data.weather[FIRST_ELEMENT].icon,
                 };
                 return weatherData;
             }
