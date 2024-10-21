@@ -1,20 +1,18 @@
 import {IconButton} from "../IconButton/IconButton";
-import {ActiveStarIcon} from "../../assets/ActiveStarIcon/ActiveStarIcon";
-import {StarIcon} from "../../assets/StarIcon/StarIcon";
-import {checkCity} from "../../utils/functions/checkCity";
 import './CurrentWeatherCard.css';
 import {WindIcon} from "../../assets/WindIcon/WindIcon";
 import {HumidityIcon} from "../../assets/HumidityIcon/HumidityIcon";
 import {formatDateTimeByTimezone} from "../../utils/functions/formatDateTimeByTimezone";
 import {getWeatherIcon} from "../../utils/functions/getWeatherIcon";
+import {getStarIcon} from "../../utils/functions/getStarIcon";
 
 export const CurrentWeatherCard = ({ currentWeather, favoritesCities, handleAddToFavorites }) => {
     if (!currentWeather) {
         return;
     }
 
+    const starIcon = getStarIcon(currentWeather.city, favoritesCities.cities);
     const date = formatDateTimeByTimezone(currentWeather.timezone);
-    const isCity = checkCity(currentWeather.city, favoritesCities.cities);
     const weatherIcon = getWeatherIcon(currentWeather.icon);
 
     return (
@@ -22,7 +20,7 @@ export const CurrentWeatherCard = ({ currentWeather, favoritesCities, handleAddT
             <div className={'weather_title_container'}>
                 <p className={'weather_title_text'}>Weather in {currentWeather.city} now</p>
                 <IconButton
-                    icon={isCity ? <ActiveStarIcon /> : <StarIcon />}
+                    icon={starIcon}
                     styles={{
                         width: '25px',
                         height: '25px',
@@ -30,7 +28,7 @@ export const CurrentWeatherCard = ({ currentWeather, favoritesCities, handleAddT
                     onClick={handleAddToFavorites}
                 />
             </div>
-            <p>{date}</p>
+            <p>{ date }</p>
 
             <div className={'weather_data_container'}>
                 <div className={'weather_data_temp_container'}>

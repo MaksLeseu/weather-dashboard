@@ -1,4 +1,5 @@
 import './Pagination.css';
+import {CITIES_PAGE} from "../../constants/common";
 
 export const Pagination = ({ currentPage, totalPages, handlePrevPage, handleNextPage }) => {
     if (totalPages < currentPage) {
@@ -7,7 +8,7 @@ export const Pagination = ({ currentPage, totalPages, handlePrevPage, handleNext
 
     return (
         <div className={'pagination_container'}>
-            <button onClick={handlePrevPage} disabled={currentPage === 1}>
+            <button onClick={handlePrevPage} disabled={currentPage === CITIES_PAGE['FIRST_PAGE']}>
                 {'<'}
             </button>
             <span>page {currentPage} of {totalPages}</span>

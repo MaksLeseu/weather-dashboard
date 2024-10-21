@@ -15,7 +15,7 @@ export const useCurrentPageHandler = (citiesLength, favoritesCities) => {
     };
 
     const handlePrevPage = () => {
-        if (currentPage > 1) {
+        if (currentPage > CITIES_PAGE['FIRST_PAGE']) {
             setCurrentPage(currentPage - 1);
         }
     };

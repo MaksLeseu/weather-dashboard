@@ -11,9 +11,9 @@ export const SearchBar = () => {
     const [ cityName, setCityName ] = useState('');
     const { error, validateInput } = useErrorHandler();
 
-    const handleInputChange = (e) => {
-        setCityName(e.currentTarget.value);
-        validateInput(e.currentTarget.value);
+    const handleInputChange = (event) => {
+        setCityName(event.currentTarget.value);
+        validateInput(event.currentTarget.value);
     }
 
     const handleClick = () => {
