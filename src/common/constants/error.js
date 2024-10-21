@@ -1,0 +1,1 @@
+export const ERROR_INPUT_MESSAGE = 'you can only enter latin letters';

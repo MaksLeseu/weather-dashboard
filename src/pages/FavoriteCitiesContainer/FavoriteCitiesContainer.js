@@ -5,20 +5,20 @@ import {useState} from "react";
 import {FavoriteCity} from "./FavoriteCity/FavoriteCity";
 import {Pagination} from "../../common/components/Pagination/Pagination";
 import './FavoriteCitiesContainer.css';
-import {CITIES_PER_PAGE} from "../../common/constants/common";
+import {CITIES_PAGE} from "../../common/constants/common";
 import {getCitiesForCurrentPage} from "../../common/utils/functions/getCitiesForCurrentPage";
 import {FIRST_ELEMENT} from "../../common/constants/api";
 
 export const FavoriteCitiesContainer = () => {
     const dispatch = useDispatch();
     const favoritesCities = useSelector(favoritesCitiesSelector);
-    const [ currentPage, setCurrentPage ] = useState(1);
+    const [ currentPage, setCurrentPage ] = useState(CITIES_PAGE['DEFAULT_CURRENT_PAGE']);
 
     if (!favoritesCities.cities[FIRST_ELEMENT]) {
         return;
     }
 
-    const totalPages = Math.ceil(favoritesCities.cities.length / CITIES_PER_PAGE);
+    const totalPages = Math.ceil(favoritesCities.cities.length / CITIES_PAGE['PER_PAGE']);
     const currentCities = getCitiesForCurrentPage(currentPage, favoritesCities);
 
     const handleClick = (cityName) => dispatch(citiesThunk.fetchCityDetails(cityName));
