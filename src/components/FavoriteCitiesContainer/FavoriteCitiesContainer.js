@@ -1,15 +1,15 @@
 import {useDispatch, useSelector} from "react-redux";
-import {favoritesCitiesSelector} from "./favoritesCities.selector";
-import {citiesThunk} from "../SearchBar/cities.slice";
+import {favoriteCitySelector} from "../../store/favoriteCity/favoriteCity.selector";
+import {citiesThunk} from "../../store/searchBar/searchBar.slice";
 import {FavoriteCity} from "./FavoriteCity/FavoriteCity";
 import {Pagination} from "../../common/components/Pagination/Pagination";
-import './FavoriteCitiesContainer.css';
+import './styles.css';
 import {FIRST_ELEMENT} from "../../common/constants/api";
 import {useCurrentPageHandler} from "../../common/utils/hooks/useCurrentPageHandler";
 
 export const FavoriteCitiesContainer = () => {
     const dispatch = useDispatch();
-    const favoritesCities = useSelector(favoritesCitiesSelector);
+    const favoritesCities = useSelector(favoriteCitySelector);
 
     const { currentPage, currentCities, totalPages, handleNextPage, handlePrevPage } =
         useCurrentPageHandler(favoritesCities.cities.length, favoritesCities);

@@ -1,0 +1,87 @@
+.weather_five_days_container {
+    max-width: 700px;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow-x: auto;
+}
+
+.weather_five_days_table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.weather_five_days_table th, .weather_five_days_table td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+}
+
+.weather_five_days_table th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.weather_five_days_table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Responsive design for screens 768px wide or smaller */
+@media (max-width: 768px) {
+    .weather_five_days_container {
+        padding: 15px;
+        box-shadow: none;
+        max-width: 100%;
+    }
+
+    .weather_five_days_table th, .weather_five_days_table td {
+        padding: 10px 12px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .weather_five_days_container {
+        padding: 10px;
+    }
+
+    .weather_five_days_table th, .weather_five_days_table td {
+        padding: 8px 10px;
+    }
+
+    /* Changing the table display on mobile so that each row is a block */
+    .weather_five_days_table, .weather_five_days_table tbody, .weather_five_days_table tr, .weather_five_days_table td, .weather_five_days_table th {
+        display: block;
+    }
+
+    /* Hiding column headers */
+    .weather_five_days_table thead {
+        display: none;
+    }
+
+    /* Rearrange rows like cards */
+    .weather_five_days_table tr {
+        margin-bottom: 15px;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+    }
+
+    /* Display labels before values */
+    .weather_five_days_table td {
+        padding: 10px;
+        text-align: right;
+        position: relative;
+    }
+
+    .weather_five_days_table td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 10px;
+        font-weight: bold;
+        text-transform: capitalize;
+    }
+}

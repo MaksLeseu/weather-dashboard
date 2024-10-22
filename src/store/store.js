@@ -1,12 +1,11 @@
 import {configureStore} from "@reduxjs/toolkit";
-import {weatherSlice} from "../pages/WeatherDashboard/weather.slice";
-import {favoritesCitiesReducer} from "../pages/FavoriteCitiesContainer/favoriteCities.slice";
-import {appReducer} from "../app/app.slice";
+import {weatherSlice} from "./weatherDashboard/weather.slice";
+import {favoritesCitiesReducer} from "./favoriteCity/app.slice";
+import {appReducer} from "./app/slice";
 
 export const store = configureStore({
     reducer: {
-        currentWeather: weatherSlice,
-        fiveDayWeather: undefined,
+        weather: weatherSlice,
         favoritesCities: favoritesCitiesReducer,
         app: appReducer,
     }

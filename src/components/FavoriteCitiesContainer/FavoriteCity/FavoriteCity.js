@@ -1,4 +1,4 @@
-import '../FavoriteCitiesContainer.css';
+import '../styles.css';
 
 export const FavoriteCity = ({ cityName, onClick }) => {
     return (

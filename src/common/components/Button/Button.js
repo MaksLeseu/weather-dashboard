@@ -1,4 +1,4 @@
-import './Button.css';
+import './styles.css';
 
 export const Button = ({ children, disabled, onClick }) => {
     return (

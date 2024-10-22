@@ -1,4 +1,4 @@
-import './ModalWindow.css';
+import './styles.css';
 
 export const ModalWindow = ({ isOpen, onClose, children }) => {
     if (!isOpen) {

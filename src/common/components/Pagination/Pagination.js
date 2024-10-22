@@ -1,8 +1,8 @@
-import './Pagination.css';
+import './styles.css';
 import {CITIES_PAGE} from "../../constants/common";
 
 export const Pagination = ({ currentPage, totalPages, handlePrevPage, handleNextPage }) => {
-    if (totalPages < currentPage) {
+    if (totalPages === CITIES_PAGE['FIRST_PAGE']) {
         return;
     }
 

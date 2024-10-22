@@ -1,4 +1,4 @@
-import './Input.css';
+import './styles.css';
 
 export const Input = ({ value, style, placeholder, onChange }) => {
     return (

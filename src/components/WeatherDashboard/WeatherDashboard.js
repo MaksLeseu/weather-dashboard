@@ -1,17 +1,19 @@
 import {useDispatch, useSelector} from "react-redux";
-import {currentWeatherSelector} from "./currentWeather.selector";
 import {CurrentWeatherCard} from "../../common/components/CurrentWeatherCard/CurrentWeatherCard";
 import {FIRST_ELEMENT} from "../../common/constants/api";
-import {favoritesCitiesSelector} from "../FavoriteCitiesContainer/favoritesCities.selector";
-import {toggleCityInFavorites} from "../FavoriteCitiesContainer/favoriteCities.slice";
+import {favoriteCitySelector} from "../../store/favoriteCity/favoriteCity.selector";
+import {toggleCityInFavorites} from "../../store/favoriteCity/app.slice";
 import {Preloader} from "../../common/components/Preloader/Preloader";
-import {appSelector} from "../../app/app.selector";
+import {appSelector} from "../../store/app/app.selector";
 import {Error} from "../../common/components/Error/Error";
+import {weatherSelector} from "../../store/weatherDashboard/weather.selector";
+import {FiveDaysWeatherCard} from "../../common/components/FiveDaysWeatherCard/FiveDaysWeatherCard";
 
 export const WeatherDashboard = () => {
     const dispatch = useDispatch();
-    const currentWeather = useSelector(currentWeatherSelector);
-    const favoritesCities = useSelector(favoritesCitiesSelector);
+    const currentWeather = useSelector(weatherSelector).currentWeather;
+    const fiveDaysWeather = useSelector(weatherSelector).fiveDaysWeather;
+    const favoritesCities = useSelector(favoriteCitySelector);
     const loading = useSelector(appSelector).loading;
     const error = useSelector(appSelector).error;
 
@@ -27,6 +29,9 @@ export const WeatherDashboard = () => {
                 currentWeather={currentWeather[FIRST_ELEMENT]}
                 favoritesCities={favoritesCities}
                 handleAddToFavorites={handleAddToFavorites}
+            />
+            <FiveDaysWeatherCard
+                fiveDaysWeather={fiveDaysWeather}
             />
             <Error error={error} />
         </div>

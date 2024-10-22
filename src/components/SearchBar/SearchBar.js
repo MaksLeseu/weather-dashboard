@@ -2,8 +2,8 @@ import {Input} from "../../common/components/Input/Input.js";
 import {Button} from "../../common/components/Button/Button.js";
 import {useState} from "react";
 import {useDispatch} from "react-redux";
-import {citiesThunk} from "./cities.slice";
-import './SearchBar.css';
+import {citiesThunk} from "../../store/searchBar/searchBar.slice";
+import './styles.css';
 import {useErrorHandler} from "../../common/utils/hooks/useErrorHandler";
 
 export const SearchBar = () => {

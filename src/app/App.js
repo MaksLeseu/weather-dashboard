@@ -1,7 +1,7 @@
-import {SearchBar} from "../pages/SearchBar/SearchBar.js";
-import {WeatherDashboard} from "../pages/WeatherDashboard/WeatherDashboard";
-import {FavoriteCitiesContainer} from "../pages/FavoriteCitiesContainer/FavoriteCitiesContainer";
-import './App.css';
+import {SearchBar} from "../components/SearchBar/SearchBar.js";
+import {WeatherDashboard} from "../components/WeatherDashboard/WeatherDashboard";
+import {FavoriteCitiesContainer} from "../components/FavoriteCitiesContainer/FavoriteCitiesContainer";
+import './styles.css';
 
 function App() {
   return (

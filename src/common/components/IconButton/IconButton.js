@@ -1,4 +1,4 @@
-import './IconButton.css'
+import './styles.css'
 
 
 export const IconButton = ({ styles , icon, onClick }) => {

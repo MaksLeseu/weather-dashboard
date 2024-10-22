@@ -5,7 +5,7 @@ import {NOT_FOUND_INDEX} from "../../common/constants/api";
 
 const savedCities = getStateFromLocalStorage('favoriteCities') || [];
 
-const slice = createSlice({
+const appSlice = createSlice({
     name: 'favoritesCities',
     initialState: {
         cities: savedCities,
@@ -24,5 +24,5 @@ const slice = createSlice({
     },
 });
 
-export const { toggleCityInFavorites } = slice.actions;
-export const favoritesCitiesReducer = slice.reducer;
+export const { toggleCityInFavorites } = appSlice.actions;
+export const favoritesCitiesReducer = appSlice.reducer;

@@ -1,11 +1,11 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {citiesApi} from "../../common/api/cities.api";
 import {FIRST_ELEMENT} from "../../common/constants/api";
-import {fetchCurrentWeather} from "../WeatherDashboard/weather.slice";
-import {showLoader} from "../../app/app.slice";
+import {fetchCurrentWeather, fetchFiveDaysWeather} from "../weatherDashboard/weather.slice";
+import {showLoader} from "../app/slice";
 import {handleServerError} from "../../common/utils/functions/handleServerError";
 
-const slice = createSlice({
+const searchBarSlice = createSlice({
     name:'cities',
     initialState: [],
     reducers: {},
@@ -21,6 +21,7 @@ export const fetchCityDetails = createAsyncThunk(
                 const lon = res.data[FIRST_ELEMENT].lon;
 
                 dispatch(fetchCurrentWeather({ lat, lon }));
+                dispatch(fetchFiveDaysWeather({ lat, lon }));
             }
         } catch (error) {
             handleServerError(error, dispatch, true);
@@ -28,6 +29,6 @@ export const fetchCityDetails = createAsyncThunk(
         }
     });
 
-export const cityAction = slice.actions;
-export const citiesSlice = slice.reducer;
+export const cityAction = searchBarSlice.actions;
+export const citiesSlice = searchBarSlice.reducer;
 export const citiesThunk = { fetchCityDetails };

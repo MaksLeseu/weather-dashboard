@@ -1,4 +1,4 @@
-import {hideLoader, setAppError} from "../../../app/app.slice";
+import {hideLoader, setAppError} from "../../../store/app/slice";
 import {ERROR_MESSAGES} from "../../constants/error";
 
 export const handleServerError = (data, dispatch, showError) => {

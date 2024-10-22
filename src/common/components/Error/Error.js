@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import {ModalWindow} from "../ModalWindow/ModalWindow";
-import {setAppError} from "../../../app/app.slice";
+import {setAppError} from "../../../store/app/slice";
 import {useDispatch} from "react-redux";
 
 export const Error = ({ error }) => {
