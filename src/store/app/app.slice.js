@@ -1,6 +1,6 @@
 import {createSlice} from "@reduxjs/toolkit";
 
-const slice = createSlice({
+const appSlice = createSlice({
     name:'app',
     initialState: {
         loading: false,
@@ -15,5 +15,5 @@ const slice = createSlice({
     },
 });
 
-export const { showLoader, hideLoader, setAppError } = slice.actions;
-export const appReducer = slice.reducer;
+export const { showLoader, hideLoader, setAppError } = appSlice.actions;
+export const appReducer = appSlice.reducer;

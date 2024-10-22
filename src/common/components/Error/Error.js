@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import {ModalWindow} from "../ModalWindow/ModalWindow";
-import {setAppError} from "../../../store/app/slice";
+import {setAppError} from "../../../store/app/app.slice";
 import {useDispatch} from "react-redux";
 
 export const Error = ({ error }) => {
@@ -20,9 +20,12 @@ export const Error = ({ error }) => {
 
     return (
         <ModalWindow isOpen={isOpen} onClose={handleClose}>
-            <div>
-                {error}
-            </div>
+            <article>
+                <header>
+                    <h2 id={'error-title'}>Error</h2>
+                </header>
+                <p>{error}</p>
+            </article>
         </ModalWindow>
     );
 };

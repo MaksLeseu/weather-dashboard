@@ -1,9 +1,10 @@
 import './styles.css';
 
-export const Button = ({ children, disabled, onClick }) => {
+export const Button = ({ children, type, disabled, onClick }) => {
     return (
         <button
             className={'button'}
+            type={type}
             disabled={disabled}
             onClick={onClick}
         >

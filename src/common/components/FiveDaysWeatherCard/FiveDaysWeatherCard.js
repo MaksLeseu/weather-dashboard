@@ -7,7 +7,8 @@ export const FiveDaysWeatherCard = ({ fiveDaysWeather }) => {
         return;
     }
     return (
-        <div className={'weather_five_days_container'}>
+        <section className={'weather_five_days_container'}>
+            <h2 id={'five-days-weather-title'}>Five-Day Weather Forecast</h2>
             <table className={'weather_five_days_table'}>
                 <thead>
                 <tr>
@@ -30,6 +31,6 @@ export const FiveDaysWeatherCard = ({ fiveDaysWeather }) => {
                 ))}
                 </tbody>
             </table>
-        </div>
+        </section>
     );
 };

@@ -5,11 +5,11 @@ import './styles.css';
 
 function App() {
   return (
-      <div className={'app_container'}>
+      <main className={'app_container'}>
           <FavoriteCitiesContainer/>
           <SearchBar/>
           <WeatherDashboard/>
-      </div>
+      </main>
   );
 }
 

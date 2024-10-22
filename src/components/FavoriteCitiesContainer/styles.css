@@ -1,5 +1,6 @@
 .favorites-city_title {
     font-size: 25px;
+    font-weight: 500;
 }
 
 .favorites-city {
@@ -15,6 +16,7 @@
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
+    border: none;
 }
 
 .favorites_city_item:hover {

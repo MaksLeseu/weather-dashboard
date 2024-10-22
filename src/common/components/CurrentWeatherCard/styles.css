@@ -5,12 +5,12 @@
     padding: 20px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
-
 .weather_title_container {
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
+    margin-bottom: 10px;
 }
 
 .weather_title_text {

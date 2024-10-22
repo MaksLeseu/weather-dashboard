@@ -1,5 +1,6 @@
 import './styles.css';
 import {CITIES_PAGE} from "../../constants/common";
+import {Button} from "../Button/Button";
 
 export const Pagination = ({ currentPage, totalPages, handlePrevPage, handleNextPage }) => {
     if (totalPages === CITIES_PAGE['FIRST_PAGE']) {
@@ -7,14 +8,14 @@ export const Pagination = ({ currentPage, totalPages, handlePrevPage, handleNext
     }
 
     return (
-        <div className={'pagination_container'}>
-            <button onClick={handlePrevPage} disabled={currentPage === CITIES_PAGE['FIRST_PAGE']}>
+        <nav className={'pagination_container'}>
+            <Button onClick={handlePrevPage} disabled={currentPage === CITIES_PAGE['FIRST_PAGE']}>
                 {'<'}
-            </button>
+            </Button>
             <span>page {currentPage} of {totalPages}</span>
-            <button onClick={handleNextPage} disabled={currentPage === totalPages}>
+            <Button onClick={handleNextPage} disabled={currentPage === totalPages}>
                 {'>'}
-            </button>
-        </div>
+            </Button>
+        </nav>
     );
 };

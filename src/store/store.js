@@ -1,7 +1,7 @@
 import {configureStore} from "@reduxjs/toolkit";
 import {weatherSlice} from "./weatherDashboard/weather.slice";
-import {favoritesCitiesReducer} from "./favoriteCity/app.slice";
-import {appReducer} from "./app/slice";
+import {favoritesCitiesReducer} from "./favoriteCity/favoriteCities.slice";
+import {appReducer} from "./app/app.slice";
 
 export const store = configureStore({
     reducer: {

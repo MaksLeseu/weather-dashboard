@@ -16,9 +16,9 @@ export const CurrentWeatherCard = ({ currentWeather, favoritesCities, handleAddT
     const weatherIcon = getWeatherIcon(currentWeather.icon);
 
     return (
-        <div className={'weather_container'}>
-            <div className={'weather_title_container'}>
-                <p className={'weather_title_text'}>Weather in {currentWeather.city} now</p>
+        <section className={'weather_container'}>
+            <header className={'weather_title_container'}>
+                <h2 className={'weather_title_text'}>Weather in {currentWeather.city} now</h2>
                 <IconButton
                     icon={starIcon}
                     styles={{
@@ -27,8 +27,8 @@ export const CurrentWeatherCard = ({ currentWeather, favoritesCities, handleAddT
                     }}
                     onClick={handleAddToFavorites}
                 />
-            </div>
-            <p>{ date }</p>
+            </header>
+            <time>{ date }</time>
 
             <div className={'weather_data_container'}>
                 <div className={'weather_data_temp_container'}>
@@ -56,6 +56,6 @@ export const CurrentWeatherCard = ({ currentWeather, favoritesCities, handleAddT
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     );
 };

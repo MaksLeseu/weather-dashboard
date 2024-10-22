@@ -7,6 +7,10 @@
     overflow-x: auto;
 }
 
+.weather_five_days_container h2 {
+    font-weight: 500;
+}
+
 .weather_five_days_table {
     width: 100%;
     border-collapse: collapse;

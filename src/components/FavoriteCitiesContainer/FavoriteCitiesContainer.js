@@ -1,6 +1,6 @@
 import {useDispatch, useSelector} from "react-redux";
 import {favoriteCitySelector} from "../../store/favoriteCity/favoriteCity.selector";
-import {citiesThunk} from "../../store/searchBar/searchBar.slice";
+import {citiesThunk} from "../../store/citiesThunk/cities.thunk";
 import {FavoriteCity} from "./FavoriteCity/FavoriteCity";
 import {Pagination} from "../../common/components/Pagination/Pagination";
 import './styles.css';
@@ -21,8 +21,8 @@ export const FavoriteCitiesContainer = () => {
     const handleClick = (cityName) => dispatch(citiesThunk.fetchCityDetails(cityName));
 
     return (
-        <div>
-            <p className={'favorites-city_title'}>Favorite cities</p>
+        <section>
+            <h2 className={'favorites-city_title'}>Favorite cities</h2>
             <div className={'favorites-city'}>
                 {currentCities.map(city => (
                     <FavoriteCity
@@ -38,7 +38,7 @@ export const FavoriteCitiesContainer = () => {
                 handlePrevPage={handlePrevPage}
                 handleNextPage={handleNextPage}
             />
-        </div>
+        </section>
     );
 };
 

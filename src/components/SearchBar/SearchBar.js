@@ -2,7 +2,7 @@ import {Input} from "../../common/components/Input/Input.js";
 import {Button} from "../../common/components/Button/Button.js";
 import {useState} from "react";
 import {useDispatch} from "react-redux";
-import {citiesThunk} from "../../store/searchBar/searchBar.slice";
+import {citiesThunk} from "../../store/citiesThunk/cities.thunk";
 import './styles.css';
 import {useErrorHandler} from "../../common/utils/hooks/useErrorHandler";
 
@@ -16,7 +16,8 @@ export const SearchBar = () => {
         validateInput(event.currentTarget.value);
     }
 
-    const handleClick = () => {
+    const handleClick = (event) => {
+        event.preventDefault();
         if (cityName.trim() !== '' && !error) {
             dispatch(citiesThunk.fetchCityDetails(cityName));
             setCityName('');
@@ -24,15 +25,17 @@ export const SearchBar = () => {
     };
 
     return (
-        <div className={'searchbar_container'}>
-            <Input
-                value={cityName}
-                style={{ marginRight: '10px' }}
-                placeholder={'Enter city'}
-                onChange={handleInputChange}
-            />
-            <Button onClick={handleClick} disabled={!!error}>Send</Button>
+        <section className={'searchbar_container'}>
+            <form onSubmit={handleClick}>
+                <Input
+                    value={cityName}
+                    style={{ marginRight: '10px' }}
+                    placeholder={'Enter city'}
+                    onChange={handleInputChange}
+                />
+                <Button type={'submit'} disabled={!!error}>Send</Button>
+            </form>
             {error && <div className={'error-message'}>{error}</div>}
-        </div>
+        </section>
     );
 };
