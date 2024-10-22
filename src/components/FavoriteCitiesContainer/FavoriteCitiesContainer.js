@@ -15,9 +15,10 @@ export const FavoriteCitiesContainer = () => {
         useCurrentPageHandler(favoritesCities.cities.length, favoritesCities);
 
     if (!favoritesCities.cities[FIRST_ELEMENT]) {
-        return;
+        return null;
     }
 
+    // Function for handling a click on a city
     const handleClick = (cityName) => dispatch(citiesThunk.fetchCityDetails(cityName));
 
     return (

@@ -6,7 +6,7 @@ import {showLoader} from "../app/app.slice";
 import {handleServerError} from "../../common/utils/functions/handleServerError";
 
 export const fetchCityDetails = createAsyncThunk(
-    'city/getCity', async (cityName, { rejectWithValue, dispatch }) => {
+    'city/getCity', async (cityName, { dispatch }) => {
         dispatch(showLoader());
         try {
             const res = await citiesApi.getCityDetails (cityName);

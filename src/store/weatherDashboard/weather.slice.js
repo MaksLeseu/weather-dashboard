@@ -26,7 +26,7 @@ const weatherBarSlice = createSlice({
 });
 
 export const fetchCurrentWeather = createAsyncThunk(
-    'weather/getWeather', async ({ lat, lon }, { rejectWithValue, dispatch }) => {
+    'weather/getWeather', async ({ lat, lon }, { dispatch }) => {
         try {
             const res = await weatherData.getCurrentWeatherData(lat, lon);
 
@@ -55,7 +55,7 @@ export const fetchCurrentWeather = createAsyncThunk(
 );
 
 export const fetchFiveDaysWeather = createAsyncThunk(
-    'weather/getFiveDaysWeather', async ({ lat, lon }, { rejectWithValue, dispatch }) => {
+    'weather/getFiveDaysWeather', async ({ lat, lon }, { dispatch }) => {
         try {
             const res = await weatherData.getFiveDayWeatherData(lat, lon);
 

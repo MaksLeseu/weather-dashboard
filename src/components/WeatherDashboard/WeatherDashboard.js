@@ -21,6 +21,7 @@ export const WeatherDashboard = () => {
         return <Preloader />;
     }
 
+    // Function to add current city to favorites
     const handleAddToFavorites = () => dispatch(toggleCityInFavorites(currentWeather[FIRST_ELEMENT].city));
 
     return (

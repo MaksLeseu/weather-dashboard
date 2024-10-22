@@ -4,7 +4,7 @@ import {Button} from "../Button/Button";
 
 export const Pagination = ({ currentPage, totalPages, handlePrevPage, handleNextPage }) => {
     if (totalPages === CITIES_PAGE['FIRST_PAGE']) {
-        return;
+        return null;
     }
 
     return (

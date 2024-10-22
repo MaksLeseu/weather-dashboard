@@ -13,12 +13,19 @@ const favoriteCitiesSlice = createSlice({
     reducers: {
         toggleCityInFavorites: (state, action) => {
             const city = action.payload;
+
+            // Find the index of an existing city in the array of selected cities
             const existingCityIndex = state.cities.findIndex((item) => item === city);
+
             if (existingCityIndex !== NOT_FOUND_INDEX) {
+                // Remove it from the array of selected cities
                 state.cities = state.cities.filter((item) => item !== city);
             }  else {
+                // If the city is not in the favorites, add it
                 state.cities.push(city);
             }
+
+            // Save the updated list of favorite cities to Local Storage
             saveToLocalStorage('favoriteCities', state.cities);
         },
     },
