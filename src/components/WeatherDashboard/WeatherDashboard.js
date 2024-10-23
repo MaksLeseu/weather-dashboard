@@ -14,10 +14,10 @@ export const WeatherDashboard = () => {
     const currentWeather = useSelector(weatherSelector).currentWeather;
     const fiveDaysWeather = useSelector(weatherSelector).fiveDaysWeather;
     const favoritesCities = useSelector(favoriteCitySelector);
-    const loading = useSelector(appSelector).loading;
+    const isFetching = useSelector(appSelector).isFetching;
     const error = useSelector(appSelector).error;
 
-    if (loading) {
+    if (isFetching) {
         return <Preloader />;
     }
 

@@ -3,12 +3,12 @@ import {createSlice} from "@reduxjs/toolkit";
 const appSlice = createSlice({
     name:'app',
     initialState: {
-        loading: false,
+        isFetching: false,
         error: null,
     },
     reducers: {
-        showLoader: (state) => ({ ...state, loading: true }),
-        hideLoader: (state) => ({ ...state, loading: false }),
+        showLoader: (state) => ({ ...state, isFetching: true }),
+        hideLoader: (state) => ({ ...state, isFetching: false }),
         setAppError: (state, action) => {
             state.error = action.payload.error;
         },
