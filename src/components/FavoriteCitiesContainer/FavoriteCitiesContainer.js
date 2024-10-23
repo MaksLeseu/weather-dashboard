@@ -1,11 +1,11 @@
 import {useDispatch, useSelector} from "react-redux";
 import {favoriteCitySelector} from "../../store/favoriteCity/favoriteCity.selector";
-import {citiesThunk} from "../../store/citiesThunk/cities.thunk";
 import {FavoriteCity} from "./FavoriteCity/FavoriteCity";
 import {Pagination} from "../../common/components/Pagination/Pagination";
 import './styles.css';
 import {FIRST_ELEMENT} from "../../common/constants/api";
 import {useCurrentPageHandler} from "../../common/utils/hooks/useCurrentPageHandler";
+import {fetchCurrentWeather, fetchFiveDaysWeather} from "../../store/weatherDashboard/weather.slice";
 
 export const FavoriteCitiesContainer = () => {
     const dispatch = useDispatch();
@@ -16,10 +16,13 @@ export const FavoriteCitiesContainer = () => {
 
     if (!favoritesCities.cities[FIRST_ELEMENT]) {
         return null;
-    }
+    };
 
     // Function for handling a click on a city
-    const handleClick = (cityName) => dispatch(citiesThunk.fetchCityDetails(cityName));
+    const handleClick = (lat, lon) => {
+        dispatch(fetchCurrentWeather({lat, lon}));
+        dispatch(fetchFiveDaysWeather({ lat, lon }));
+    };
 
     return (
         <section>
@@ -27,9 +30,9 @@ export const FavoriteCitiesContainer = () => {
             <div className={'favorites-city'}>
                 {currentCities.map(city => (
                     <FavoriteCity
-                        key={city}
-                        cityName={city}
-                        onClick={() => handleClick(city)}
+                        key={city.name}
+                        cityName={city.name}
+                        onClick={() => handleClick(city.coord.lat, city.coord.lon)}
                     />
                 ))}
             </div>

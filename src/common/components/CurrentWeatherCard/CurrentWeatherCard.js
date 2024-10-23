@@ -8,7 +8,7 @@ import './styles.css';
 
 export const CurrentWeatherCard = ({ currentWeather, favoritesCities, handleAddToFavorites }) => {
     if (!currentWeather) {
-        return;
+        return null;
     }
 
     const starIcon = getStarIcon(currentWeather.city, favoritesCities.cities);

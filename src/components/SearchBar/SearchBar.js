@@ -14,7 +14,7 @@ export const SearchBar = () => {
     const handleInputChange = (event) => {
         setCityName(event.currentTarget.value);
         validateInput(event.currentTarget.value);
-    }
+    };
 
     const handleClick = (event) => {
         event.preventDefault();

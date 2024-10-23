@@ -22,7 +22,7 @@ export const WeatherDashboard = () => {
     }
 
     // Function to add current city to favorites
-    const handleAddToFavorites = () => dispatch(toggleCityInFavorites(currentWeather[FIRST_ELEMENT].city));
+    const handleAddToFavorites = () => dispatch(toggleCityInFavorites(currentWeather[FIRST_ELEMENT]));
 
     return (
         <div>

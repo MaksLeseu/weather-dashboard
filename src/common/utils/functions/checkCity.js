@@ -10,5 +10,5 @@ export const checkCity = (cityName, favoritesCities) => {
         return null;
     }
 
-    return favoritesCities.find(city => city === cityName);
+    return favoritesCities.find(city => city.name === cityName);
 };

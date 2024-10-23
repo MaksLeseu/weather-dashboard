@@ -4,7 +4,7 @@ import {FIRST_ELEMENT} from "../../constants/api";
 
 export const FiveDaysWeatherCard = ({ fiveDaysWeather }) => {
     if (!fiveDaysWeather[FIRST_ELEMENT]) {
-        return;
+        return null;
     }
     return (
         <section className={'weather_five_days_container'}>
