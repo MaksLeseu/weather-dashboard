@@ -16,7 +16,7 @@ export const FavoriteCitiesContainer = () => {
 
     if (!favoritesCities.cities[FIRST_ELEMENT]) {
         return null;
-    };
+    }
 
     // Function for handling a click on a city
     const handleClick = (lat, lon) => {

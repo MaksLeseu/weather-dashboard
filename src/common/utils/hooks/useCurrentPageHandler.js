@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {CITIES_PAGE} from "../../constants/common";
 import {getCitiesForCurrentPage} from "../functions/getCitiesForCurrentPage";
 
@@ -29,6 +29,13 @@ export const useCurrentPageHandler = (citiesLength, favoritesCities) => {
             setCurrentPage(currentPage - 1);
         }
     };
+
+    useEffect(() => {
+        // If the current page exceeds the total pages, set the current page to the last available page
+        if (currentPage > totalPages) {
+            setCurrentPage(totalPages);
+        }
+    }, [citiesLength, currentPage, totalPages]);
 
     return {
         currentPage,
