@@ -8,7 +8,7 @@ export const fetchCityDetails = createAsyncThunk(
     'city/getCity', async (cityName, { dispatch }) => {
         try {
             const res = await citiesApi.getCityDetails (cityName);
-            console.log(res)
+
             if (res.data) {
                 const lat = res.data[FIRST_ELEMENT].lat;
                 const lon = res.data[FIRST_ELEMENT].lon;
@@ -17,7 +17,6 @@ export const fetchCityDetails = createAsyncThunk(
                 dispatch(fetchFiveDaysWeather({ lat, lon }));
             }
         } catch (error) {
-            console.log(error)
             handleServerError(error, dispatch, true);
         }
     });
