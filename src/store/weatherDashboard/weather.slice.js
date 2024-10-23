@@ -2,7 +2,6 @@ import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {weatherData} from "../../common/api/weather.api";
 import {temperatureInCelsius} from "../../common/utils/functions/temperatureInCelsius";
 import {FIRST_ELEMENT} from "../../common/constants/api";
-import {hideLoader, showLoader} from "../app/app.slice";
 import {handleServerError} from "../../common/utils/functions/handleServerError";
 import {groupWeatherDataByDate} from "../../common/utils/functions/groupWeatherDataByDate";
 import {calculateFiveDayForecast} from "../../common/utils/functions/calculateFiveDayForecast";
@@ -27,7 +26,6 @@ const weatherBarSlice = createSlice({
 
 export const fetchCurrentWeather = createAsyncThunk(
     'weather/getWeather', async ({ lat, lon }, { dispatch }) => {
-        dispatch(showLoader());
         try {
             const res = await weatherData.getCurrentWeatherData(lat, lon);
 
@@ -50,7 +48,6 @@ export const fetchCurrentWeather = createAsyncThunk(
                         lon: res.data.coord.lon,
                     },
                 };
-                dispatch(hideLoader());
                 return weatherData;
             }
         } catch (error) {
@@ -75,7 +72,6 @@ export const fetchFiveDaysWeather = createAsyncThunk(
                 const groupedByDate = groupWeatherDataByDate(forecastData);
                 const fiveDayForecast = calculateFiveDayForecast(groupedByDate);
 
-                dispatch(hideLoader());
                 return fiveDayForecast;
             }
 
